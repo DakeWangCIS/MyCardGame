@@ -8,6 +8,7 @@ class EquipmentCard extends Card {
     // attractive function
     activateEffect(gameContext, target) {
         // 装备牌通常不需要在这里激活，而是在玩家装备时处理
+        target.equip(this);
         console.log(`${this.name} 已装备到 ${target.name}`);
         // ...根据装备类型执行效果
     }

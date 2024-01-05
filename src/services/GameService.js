@@ -4,7 +4,7 @@ class GameService {
     constructor() {
         this.players = []; // 玩家列表
         this.currentTurn = null; // 当前的玩家
-        this.deck = deck; // 牌堆
+        this.deck = [...deck]; // 牌堆
         // ...其他游戏状态属性
     }
 
@@ -26,6 +26,40 @@ class GameService {
         this.setInitialPlayerStates();
 
         // ...其他初始化逻辑
+    }
+
+    // 洗牌
+    shuffleDeck() {
+        for (let i = this.deck.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [this.deck[i], this.deck[j]] = [this.deck[j], this.deck[i]];
+        }
+    }
+
+    // 发牌
+    dealInitialCards() {
+        this.players.forEach(player => {
+            // 每个玩家摸4张牌
+            player.handCards.push(...this.deck.splice(0, 4));
+        });
+    }
+
+    // 创建玩家
+    createPlayers() {
+        // 创建玩家
+        const players = [];
+        // ...创建玩家的逻辑
+        return players;
+    }
+
+    // 分配武将
+    assignGenerals() {
+        // ...分配武将的逻辑
+    }
+
+    // 设置玩家的初始状态
+    setInitialPlayerStates() {
+        // ...设置玩家的初始状态
     }
 
     // 开始游戏

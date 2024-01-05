@@ -96,7 +96,7 @@ class Player {
     }
 
     // 决策方法：决定是否使用 "闪"
-    decideToUseShanAgainSha() {
+    decideToUseShanAgainstSha() {
         // 这里可以根据实际情况进行交互式询问或 AI 决策
         // 现在我们只是返回一个布尔值作为示例
         return true; // 假设玩家总是选择使用 "闪"
