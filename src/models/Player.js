@@ -30,6 +30,11 @@ class Player {
         }
     }
 
+    // isDying
+    isDying() {
+        return this.currentHealth <= 0;
+    }
+
     // recover health
     recoverHealth(amount) {
         this.currentHealth = Math.min(this.currentHealth + amount, this.general.maxHealth);
