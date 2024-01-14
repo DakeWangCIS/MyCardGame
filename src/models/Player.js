@@ -10,6 +10,7 @@ class Player {
         this.isKing = false; // 是否为主公
         this.isChained = false; // 是否处于连环状态
         this.shaUsed = 0; // 记录在当前回合已使用杀的次数
+        this.jiuUsed = 0; // 记录在当前回合已使用酒的次数
         this.isAlive = true; // 是否存活
         this.filpOver = false; // 是否翻面
     }
@@ -61,18 +62,6 @@ class Player {
         this.usedAbilities = {};
     }
 
-    // 使用杀
-    useSha(target) {
-        if (!this.canUseSha()) {
-            console.log(`${this.name} cannot use 杀 anymore this turn.`);
-            return;
-        }
-
-        this.shaUsed++;
-        console.log(`${this.name} uses 杀 on ${target.name}`);
-        // ...执行使用杀的逻辑
-    }
-
     // 检查是否可以使用杀
     canUseSha() {
         const shaLimit = this.getShaLimit();
@@ -85,6 +74,31 @@ class Player {
             return Infinity;
         }
         return 1;
+    }
+
+    // 重制杀的使用次数
+    resetShaUsed() {
+        this.shaUsed = 0;
+    }
+
+    // 是否已经使用过酒
+    hasUsedJiu() {
+        return this.jiuUsed;
+    }
+
+    // 标记已经使用过酒
+    markJiuAsUsed() {
+        this.jiuUsed = 0;
+    }
+
+    // 重置已使用过酒的标记
+    resetJiuUsed() {
+        this.jiuUsed = false;
+    }
+
+    // 设置酒的效果
+    setJiuEffect(effect) {
+        this.jiuEffect = effect;
     }
 
     // 检查是否装备了特定武器
@@ -116,7 +130,11 @@ class Player {
     // 出牌
     playCard(card, target) {
         // ...执行出牌的逻辑
-
+        if (card.strategy) {
+            card.strategy.execute(this, card, target);
+        } else {
+            console.error(`Card ${card.name} has no strategy.`)
+        }
     }
 
     // ...其他方法，如装备武器、使用其他卡牌等

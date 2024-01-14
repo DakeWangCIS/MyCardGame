@@ -1,9 +1,9 @@
-const CardStrategy = require('./CardStrategy');
+const CardStrategy = require('../CardStrategy');
 
 class ShaStrategy extends CardStrategy {
-    execute(gameContext, target) {
+    execute(player, gameContext, target) {
         // 获取当前玩家和行动源
-        const currentPlayer = gameContext.currentPlayer;
+        const currentPlayer = player;
         const source = gameContext.actionSource;
 
         if (source && (source.name === "决斗" || source.name === "南蛮入侵")) {

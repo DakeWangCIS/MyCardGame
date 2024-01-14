@@ -1,8 +1,8 @@
-const CardStrategy = require('./CardStrategy');
+const CardStrategy = require('../CardStrategy');
 
 class ShanStrategy extends CardStrategy {
-    execute(gameContext, target) {
-        const currentPlayer = gameContext.currentPlayer;
+    execute(player, gameContext, target) {
+        const currentPlayer = player; // 当前玩家
         const source = gameContext.actionSource; // 发起攻击的源
 
         if (source.name === "万箭齐发") {

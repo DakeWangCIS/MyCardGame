@@ -1,6 +1,6 @@
 import Card from '../models/Card';
-import shaStrategy from '../strategies/ShaStrategy';
-import shanStrategy from '../strategies/ShanStrategy';
+import shaStrategy from '../strategies/basicCardStrategy/ShaStrategy';
+import shanStrategy from '../strategies/basicCardStrategy/ShanStrategy';
 
 // map the strategy to the card based on the card name
 const strategies = {

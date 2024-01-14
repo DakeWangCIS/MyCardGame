@@ -1,9 +1,9 @@
-const CardStrategy = require('./CardStrategy');
+const CardStrategy = require('../CardStrategy');
 
 class TaoStrategy extends CardStrategy {
-    execute(gameContext, target) {
+    execute(player, gameContext, target) {
         // 如果目标未指定，则默认为当前玩家
-        target = target || gameContext.currentPlayer;
+        target = target || player;
 
         // 只有在生命值不满或玩家濒死时才能使用桃
         if (target.currentHealth < target.maxHealth || target.isDying) {
